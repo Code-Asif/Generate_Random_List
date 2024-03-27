@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import bg from './r.mp4';
 import './style.css';
 const App = () => {
   const [inputValue, setInputValue] = useState('');
@@ -30,39 +31,44 @@ const App = () => {
 
   return (
     <div>
-      <h1>Generate Random List</h1>
-      <div>
-        <label htmlFor="namesInput">Enter List:</label>
-        <input
-          type="text"
-          id="namesInput"
-          value={inputValue}
-          placeholder='Enter names separated by commas like: Asif, Alam, kamran, Afzal'
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="rangeInput">Select Range:</label>
-        <input
-          type="range"
-          id="rangeInput"
-          min={0}
-          max={inputValue.trim().split(',').length}
-          value={rangeValue}
-          onChange={handleRangeChange}
-        />
-        <span>{rangeValue}</span>
-      </div>
-      <div>
-        <button onClick={generateNames}>Generate</button>
-      </div>
-      <div>
-        <h2>Generated Names:</h2>
-        <ul>
-          {generatedNames.map((name, index) => (
-            <li key={index}>{name}</li>
-          ))}
-        </ul>
+      <video autoPlay muted loop className="myVideo">
+        <source src={bg} type="video/mp4" />
+      </video>
+      <div className="content">
+        <h1>Generate Random List</h1>
+        <div>
+          <label htmlFor="namesInput">Enter List:</label>
+          <input
+            type="text"
+            id="namesInput"
+            value={inputValue}
+            placeholder='Enter names separated by commas like: Asif, Alam, kamran, Afzal'
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="rangeInput">Select Range:</label>
+          <input
+            type="range"
+            id="rangeInput"
+            min={0}
+            max={inputValue.trim().split(',').length}
+            value={rangeValue}
+            onChange={handleRangeChange}
+          />
+          <span>{rangeValue}</span>
+        </div>
+        <div>
+          <button onClick={generateNames}>Generate</button>
+        </div>
+        <div>
+          <h2>Generated Names:</h2>
+          <ul>
+            {generatedNames.map((name, index) => (
+              <li key={index}>{name}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
